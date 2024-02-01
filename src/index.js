@@ -14,7 +14,7 @@ enquirer
 			type: 'select',
 			name: 'database',
 			message: 'choose your prefered database',
-			choices: ['mongodb', 'postgresql'],
+			choices: ['mongodb', 'mysql'],
 		},
 		{
 			type: 'input',

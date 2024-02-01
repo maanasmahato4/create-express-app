@@ -28,7 +28,7 @@ function Generator(values) {
 				'src',
 				'templates',
 				'javascript',
-				'postgresql',
+				'mysql',
 			);
 		}
 	} else {
@@ -46,7 +46,7 @@ function Generator(values) {
 				'src',
 				'templates',
 				'typescript',
-				'postgresql',
+				'mysql',
 			);
 		}
 	}
@@ -77,6 +77,15 @@ function Generator(values) {
 				fs.copyFileSync(source_path, file_path);
 			}
 			file_path = path.join(test_dir, file);
+			fs.copyFileSync(source_path, file_path);
+		} else if (file === 'index.types.ts') {
+			let types_dir = path.join(TARGET_DIR, 'src', '@Types');
+			if (!fs.existsSync(types_dir)) {
+				fs.mkdirSync(types_dir);
+				file_path = path.join(types_dir, file);
+				fs.copyFileSync(source_path, file_path);
+			}
+			file_path = path.join(types_dir, file);
 			fs.copyFileSync(source_path, file_path);
 		} else if (file === 'index.js' || file === 'index.ts') {
 			let src_dir = path.join(TARGET_DIR, 'src');
